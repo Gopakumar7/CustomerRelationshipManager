@@ -4,6 +4,16 @@ Local-first personal CRM based on [ARCHITECTURE.md](./ARCHITECTURE.md), with
 company, contact, opportunity, interaction, assessment, follow-up, dashboard,
 search, filtering, and detail workflows implemented.
 
+## Windows user installation
+
+For a non-developer Windows installation, install Docker Desktop, copy this
+folder to the computer, and double-click `INSTALL-CRM.bat`. The complete
+procedure, daily start/stop instructions, backups, restores, and
+troubleshooting are documented in [USER_INSTALLATION.md](./USER_INSTALLATION.md).
+
+The installer runs the packaged production Compose stack and exposes the CRM at
+<http://127.0.0.1:5173/>.
+
 ## Prerequisites
 
 - Python 3.12+
