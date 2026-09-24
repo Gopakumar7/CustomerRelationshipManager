@@ -15,8 +15,7 @@ services:
       retries: 12
 
   backend:
-    build:
-      context: ./backend
+    image: ghcr.io/gopakumar7/customerrelationshipmanager-backend:latest
     restart: unless-stopped
     environment:
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-}
@@ -38,9 +37,7 @@ services:
         condition: service_healthy
 
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile.production
+    image: ghcr.io/gopakumar7/customerrelationshipmanager-frontend:latest
     restart: unless-stopped
     ports:
       - "127.0.0.1:5173:80"

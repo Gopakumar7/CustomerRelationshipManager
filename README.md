@@ -14,6 +14,11 @@ troubleshooting are documented in [USER_INSTALLATION.md](./USER_INSTALLATION.md)
 The installer runs the packaged production Compose stack and exposes the CRM at
 <http://127.0.0.1:5173/>.
 
+The production installer downloads public pre-built images from GitHub Container
+Registry. Developers publish updated images through the
+`.github/workflows/publish-images.yml` workflow; end users do not need access
+to the source code or a GitHub account.
+
 ## Prerequisites
 
 - Python 3.12+

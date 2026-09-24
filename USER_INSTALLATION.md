@@ -5,7 +5,7 @@ computer. You only need:
 
 - Windows 10 or Windows 11
 - Docker Desktop
-- The CRM project folder copied to your computer
+- The small CRM launcher folder copied to your computer
 
 You do **not** need to install Python, Node.js, npm, PostgreSQL, Django, React,
 Git, VS Code, or a compiler.
@@ -33,16 +33,18 @@ Docker Desktop must be running whenever you want to use the CRM.
 
 ## 3. First-time CRM installation
 
-1. Copy the complete CRM folder to a permanent location, for example:
+1. Copy the CRM installer folder to a permanent location, for example:
    `C:\PersonalCRM`.
 2. Do not rename or remove the files inside the folder.
 3. Double-click `INSTALL-CRM.bat`.
-4. The installer checks Docker, creates local configuration, builds the
-   application containers, creates the database storage, and starts the CRM.
+4. The installer checks Docker, creates local configuration, downloads the
+   pre-built public CRM images, creates the database storage, and starts the
+   CRM.
 5. When installation succeeds, it displays the CRM address.
 
 The first installation may take several minutes because Docker downloads the
-required images and builds the application.
+required images. The installer does not require Python, Node.js, npm, or any
+development tools.
 
 The installer creates `.env` from `.env.example` if it does not already exist.
 This file is local configuration and should not be shared.
@@ -91,19 +93,19 @@ load, run `START-CRM.bat` and check Docker Desktop.
 
 ## 9. Updating the CRM
 
-When you receive a new CRM folder or updated files:
+When a new CRM version is available:
 
 1. Stop the CRM with `STOP-CRM.bat`.
 2. Make a backup before replacing files.
-3. Replace the application files with the new version.
+3. Replace the launcher files with the new version.
 4. Keep your existing `.env` file.
 5. Double-click `INSTALL-CRM.bat`.
 
-The installer rebuilds the application containers and runs database migrations.
+The installer downloads the latest public images and runs database migrations.
 Migrations are designed to preserve existing data. Do not delete the Docker
 database volume during an update.
 
-If you update by copying over the existing folder, close any open command
+If you update by copying over the existing launcher folder, close any open command
 windows first and do not overwrite `.env` unless you intentionally want to
 reset local configuration.
 
@@ -174,9 +176,8 @@ The CRM is configured to use port 5173 for its local browser address.
 
 ### Installation takes a long time
 
-The first installation downloads Docker images and builds the frontend. Keep
-Docker Desktop open and allow the process to finish. A later start is much
-faster.
+The first installation downloads the backend and frontend images. Keep Docker
+Desktop open and allow the process to finish. A later start is much faster.
 
 ### A container is unhealthy
 

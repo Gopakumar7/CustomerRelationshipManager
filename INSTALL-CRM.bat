@@ -25,7 +25,7 @@ if errorlevel 1 (
   exit /b 1
 )
 
-for %%F in (docker-compose.production.yml .env.example backend\Dockerfile frontend\Dockerfile.production frontend\nginx.conf) do (
+for %%F in (docker-compose.production.yml .env.example) do (
   if not exist "%%F" (
     echo Required file is missing: %%F
     pause
@@ -43,8 +43,15 @@ if not exist ".env" (
   echo Created local configuration file.
 )
 
-echo Building and starting CRM containers. The first installation may take several minutes.
-docker compose -f docker-compose.production.yml up -d --build
+echo Downloading and starting CRM containers. The first installation may take several minutes.
+docker compose -f docker-compose.production.yml pull
+if errorlevel 1 (
+  echo Could not download the CRM images.
+  echo Check your internet connection and try again.
+  pause
+  exit /b 1
+)
+docker compose -f docker-compose.production.yml up -d
 if errorlevel 1 (
   echo Installation failed while starting the containers.
   echo Run STATUS-CRM.bat for more information.
