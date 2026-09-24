@@ -1,0 +1,16 @@
+.env
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+backend/db.sqlite3
+backend/staticfiles/
+frontend/node_modules/
+frontend/dist/
+node_modules/
+playwright-report/
+test-results/
+.coverage
+htmlcov/
+.DS_Store
+*.log
